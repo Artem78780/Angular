@@ -1,0 +1,20 @@
+.form-control {
+    width: 50%;
+    padding: 10px;
+    border: 1px dotted rgb(183, 0, 255);
+    margin: 8px;
+}
+.btn {
+    padding: 5px;
+    background-color: rgb(151, 151, 255);
+    cursor: pointer;
+    text-decoration: 0.4s solid;
+}
+.btn:hover {
+    background-color: rgb(117, 9, 218);
+}
+.card {
+    padding: 10px;
+    border: 1px dotted blueviolet;
+    margin: 8px 0;
+}
