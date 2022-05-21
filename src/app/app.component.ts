@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 export interface Post  {
   title: string,
@@ -12,12 +13,21 @@ export interface Post  {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  
- date: Observable<Date> = new Observable(obj => {
-   setInterval(() => {
-     obj.next(new Date)
-   }, 1000)
- })
+export class AppComponent implements OnInit {
+  form: FormGroup = new FormGroup({})
 
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('',[Validators.required,
+      Validators.minLength(6)])
+    })
+  }
+  submit(){
+    if(this.form.valid){
+    console.log(this.form)
+    const formData = {...this.form.value}
+    console.log('Form Data:', formData)
+    }
+  }
 }
