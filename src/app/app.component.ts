@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface Post  {
   title: string,
@@ -13,10 +14,10 @@ export interface Post  {
 })
 export class AppComponent {
   
-  p: Promise<string> = new Promise<string>(resolve => {
-    setTimeout(() => {
-      resolve('Promise Resolved')
-    }, 4000);
-  })
+ date: Observable<Date> = new Observable(obj => {
+   setInterval(() => {
+     obj.next(new Date)
+   }, 1000)
+ })
 
 }
