@@ -1,12 +1,12 @@
-import { Component, OnInit} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-
-export interface Post  {
-  title: string,
-  text: string,
-  id?: any
+export interface Todo {
+  complited: boolean
+  title: string
+  id?: number
 }
+
 
 @Component({
   selector: 'app-root',
@@ -14,20 +14,19 @@ export interface Post  {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  form: FormGroup = new FormGroup({})
 
+  todos: Todo[] = []
+
+  constructor(private http: HttpClient) {
+    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
+      .subscribe((todos) => {
+        console.log('Response is ', todos)
+        this.todos = todos
+      })
+  }
   ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('',[Validators.required,
-      Validators.minLength(6)])
-    })
+
   }
-  submit(){
-    if(this.form.valid){
-    console.log(this.form)
-    const formData = {...this.form.value}
-    console.log('Form Data:', formData)
-    }
-  }
+
+
 }

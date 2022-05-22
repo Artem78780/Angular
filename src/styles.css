@@ -4,15 +4,8 @@
     border: 1px dotted rgb(183, 0, 255);
     margin: 8px;
 }
-.btn {
-    padding: 5px;
-    background-color: rgb(151, 151, 255);
-    cursor: pointer;
-    text-decoration: 0.4s solid;
-}
-.btn:hover {
-    background-color: rgb(117, 9, 218);
-}
+
+
 .card {
     padding: 10px;
     border: 1px dotted blueviolet;
@@ -27,9 +20,7 @@ label {
     font-size: 16px;
     margin-bottom: 5px;
 }
-.ng-invalid .ng-touched {
-    border: 2px solid red;
-}
-.ng-valid .ng-touched {
-    border: 2px solid green;
-}
+
+
+
+

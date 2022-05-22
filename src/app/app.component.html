@@ -1,63 +1,23 @@
 <div class="container">
-  <form 
-    class="card"
-    [formGroup]="form" 
-    (ngSubmit)="submit()"
-    >
-    <h1>Angular Component</h1>
+  <h1>Angular Component</h1>
 
+  <div class="card">
     <div class="form-control">
-      <label>Email </label>
-      <input 
-        type="text" 
-        placeholder="Email" 
-        formControlName="email"
-      />
-      <div class="validation"></div>
+      <input type="text" placeholder="Назва" />
     </div>
+    <button class="btn">Добавити</button>
+    <button class="btn">Загрузити</button>
+  </div>
 
-    <div class="form-control">
-      <label>Пароль </label>
-      <input 
-        type="password" 
-        placeholder="Пароль"
-        formControlName="password"  
-      />
-      <div class="validation"></div>
-    </div>
+  <hr />
 
-    <div class="card">
-      <h2>Адреса</h2>
-
-      <div class="form-control">
-        <label>Країна</label>
-        <select>
-          <option value="ua">Україна</option>
-          <option value="usa">США</option>
-          <option value="en">Англія</option>
-        </select>
-      </div>
-
-      <div class="form-control">
-        <input type="text" />
-      </div>
-
-      <button class="btn" type="button">Вибрати столицю</button>
-    </div>
-
-    <div class="card">
-      <h2>Ваший навик</h2>
-      <button class="btn" type="button">Добавити вміння</button>
-      <div class="form-control">
-        <label></label>
-        <input type="text" />
-      </div>
-    </div>
-
-    <button 
-      class="btn" 
-      type="submit"
-      [disabled]="form.invalid"
-    >Відправити</button>
-  </form>
+  <div class="card" *ngFor="let todo of todos">
+    <p>
+      <span class="completed" [class.complited]="todo.complited">{{ todo.title | titlecase}}</span>
+      <span>
+        <button class=" btn-danger">Видалити</button>
+        <button class="btn" [disabled]="todo.complited">Завершити</button>
+      </span>
+    </p>
+  </div>
 </div>

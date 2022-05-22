@@ -1,3 +1,36 @@
 p{
-    font-size: 16px;
+    display: flex;
+    justify-content:space-between;
+}
+ul{
+    list-style: none;
+}
+img {
+    width: 100%;
+}
+.btn {
+    display: inline-block;
+    background: #333;
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px;
+    outline: none;
+    transition: 0.2s ease-in;
+    color: aliceblue;
+}
+.btn:disabled {
+    background: #ccc;
+    color: rgb(255, 255, 255);
+    cursor: not-allowed;
+}
+.btn:hover{
+    opacity: 0.8;
+}
+.btn-danger {
+    background:  red;
+    color: #fff;
+    padding: 5px;
+}
+.completed {
+    font-size: 20px;
 }
