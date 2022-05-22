@@ -10,18 +10,24 @@
         />
     </div>
     <button class="btn" (click)="addPost()">Добавити</button>
-    <button class="btn">Загрузити</button>
+    <button class="btn" (click)="fetchTodos()">Загрузити</button>
   </div>
 
   <hr />
 
-  <div class="card" *ngFor="let todo of todos">
-    <p>
-      <span class="completed" [class.complited]="todo.complited">{{ todo.title | titlecase}}</span>
-      <span>
-        <button class=" btn-danger">Видалити</button>
-        <button class="btn" [disabled]="todo.complited">Завершити</button>
-      </span>
-    </p>
+  <div *ngIf="!loading; else loadingBlock">
+    <div class="card" *ngFor="let todo of todos">
+      <p>
+        <span class="completed" [class.complited]="todo.complited">{{ todo.title | titlecase}}</span>
+        <span>
+          <button class=" btn-danger">Видалити</button>
+          <button class="btn" [disabled]="todo.complited">Завершити</button>
+        </span>
+      </p>
+    </div>
   </div>
+  <ng-template #loadingBlock> 
+    Loading...
+  </ng-template>
+
 </div>
