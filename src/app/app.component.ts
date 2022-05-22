@@ -17,16 +17,37 @@ export class AppComponent implements OnInit {
 
   todos: Todo[] = []
 
+  todoTitle: string = ''
+
   constructor(private http: HttpClient) {
-    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
-      .subscribe((todos) => {
-        console.log('Response is ', todos)
-        this.todos = todos
-      })
   }
   ngOnInit(): void {
-
+    this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+    .subscribe((todos) => {
+      console.log('Response is ', todos)
+      this.todos = todos
+    })
   }
+
+  addPost(){
+    if(!this.todoTitle.trim()){
+      return
+    }
+
+    const newTodo: Todo = {
+      title: this.todoTitle,
+      complited: false
+    }
+
+    this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', newTodo)
+      .subscribe((post ) => {
+        this.todos.unshift(post)
+        this.todoTitle = ''
+      })
+  }
+
+
+
 
 
 }
